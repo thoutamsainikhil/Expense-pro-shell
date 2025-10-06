@@ -88,7 +88,7 @@ sudo dnf install mysql -y &>>$LOG_FILE_NAME
 VALIDATE $? "Installing MySQL Client"
 
 mysql -h mysql.jsrdaws.online -u root -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE_NAME
-VALIDATE $? "Setting up the transaction schemas and tables
+VALIDATE $? "Setting up the transaction schemas and tables"
 
 systemctl daemon-reload &>>$LOG_FILE_NAME
 VALIDATE $? "Reloading systemd services"
