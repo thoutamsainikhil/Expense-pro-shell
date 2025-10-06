@@ -50,7 +50,7 @@ VALIDATE $? "Starting MySQL Service"
 mysql_secure_installation --set-root-pass ExpenseApp@1
 VALIDATE $? "Setting MySQL root password"
 
-mysql -h mysql.jsrdaws.online -u root -pExpenseApp@1 -e "show databses;"
+mysql -h mysql.jsrdaws.online -u root -pExpenseApp@1 -e "show databases;"
 
 if [$? -ne 0]
 then
