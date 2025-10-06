@@ -12,14 +12,18 @@ TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 
 VALIDATE(){
-      if [ $? -ne 0 ]
-  then
-    echo -e "$RED ERROR: Installation failed$Normal"
-    exit 1
-  else
-  echo -e "$GREEN SUCCESS: Installation completed$Normal"
-  fi
+if [ $1 -ne 0 ]
+    then
+        echo -e "$2 ... $R FAILURE $N"
+        exit 1
+    else
+        echo -e "$2 ... $G SUCCESS $N"
+    fi
 }
+
+
+
+
 
 echo "Script started executing at : $TIMESTAMP" &>>$LOG_FILE_NAME
 
