@@ -46,8 +46,15 @@ VALIDATE $? "Installing Nginx Web Server"
 systemctl enable nginx &>>$LOG_FILE_NAME
 VALIDATE $? "Enabling Nginx Service"
 
-systemctl start nginx &>>$LOG_FILE_NAME
-VALIDATE $? "Starting Nginx Service"    
+sudo systemctl status nginx 
+if [ $? -eq 0 ];
+ then
+  echo "Nginx already running, restarting..." &>>$LOG_FILE_NAME
+  sudo systemctl restart nginx &>>$LOG_FILE_NAME
+  VALIDATE $? "Restarting Nginx Service"
+else
+  sudo systemctl start nginx &>>$LOG_FILE_NAME
+  VALIDATE $? "Starting Nginx Service"    
 
 rm -rf /usr/share/nginx/html/* &>>$LOG_FILE_NAME
 VALIDATE $? "Removing existing Nginx HTML files"    
