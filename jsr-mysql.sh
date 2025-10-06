@@ -47,12 +47,9 @@ VALIDATE $? "Enabling MySQL Service"
 systemctl start mysqld &>>$LOG_FILE_NAME
 VALIDATE $? "Starting MySQL Service"
 
-mysql_secure_installation --set-root-pass ExpenseApp@1
-VALIDATE $? "Setting MySQL root password"
-
 mysql -h mysql.jsrdaws.online -u root -pExpenseApp@1 -e "show databases;"
 
-if [$? -ne 0]
+if [ $? -ne 0 ]
 then
 echo "MySQL Root password not setup" &>>$LOG_FILE_NAME
 mysql_secure_installation --set-root-pass ExpenseApp@1
