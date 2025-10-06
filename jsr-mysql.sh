@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#!/bin/bash
-
 USER_ID=$(id -u)
 
 RED="\e[31m"
