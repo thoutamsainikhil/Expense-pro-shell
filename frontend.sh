@@ -58,7 +58,8 @@ if [ $? -eq 0 ];
   VALIDATE $? "Restarting Nginx Service"
 else
   sudo systemctl start nginx &>>$LOG_FILE_NAME
-  VALIDATE $? "Starting Nginx Service"    
+  VALIDATE $? "Starting Nginx Service"   
+fi 
 
 rm -rf /usr/share/nginx/html/* &>>$LOG_FILE_NAME
 VALIDATE $? "Removing existing Nginx HTML files"    
