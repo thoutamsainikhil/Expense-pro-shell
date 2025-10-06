@@ -35,10 +35,10 @@ then
 fi
 }
 
+CHECK_ROOT
+
 mkdir -p $LOGS_FOLDER
 echo "Script started executing at : $TIMESTAMP" &>>$LOG_FILE_NAME
-
-CHECK_ROOT
 
 dnf install nginx -y &>>$LOG_FILE_NAME
 VALIDATE $? "Installing Nginx Web Server"
