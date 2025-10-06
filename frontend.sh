@@ -50,9 +50,8 @@ VALIDATE $? "Enabling Nginx Service"
 cp /home/ec2-user/Expense-pro-shell/expense.conf /etc/nginx/conf.d/expense.conf &>>$LOG_FILE_NAME
 VALIDATE $? "Copying Nginx configuration file"
 
-sudo systemctl status nginx 
-if [ $? -eq 0 ];
- then
+sudo systemctl start nginx
+if [ $? -eq 0 ]; then
   echo "Nginx already running, restarting..." &>>$LOG_FILE_NAME
   sudo systemctl restart nginx &>>$LOG_FILE_NAME
   VALIDATE $? "Restarting Nginx Service"
