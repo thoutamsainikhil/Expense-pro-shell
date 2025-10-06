@@ -69,6 +69,7 @@ VALIDATE $? "Downloading backend code"
 
 cd /app &>>$LOG_FILE_NAME
 VALIDATE $? "Changing directory to /app"
+rm -rf /app/* &>>$LOG_FILE_NAME
 
 unzip /tmp/backend.zip &>>$LOG_FILE_NAME
 VALIDATE $? "Extracting backend code"
@@ -94,5 +95,5 @@ VALIDATE $? "Reloading systemd services"
 systemctl enable expense-backend &>>$LOG_FILE_NAME
 VALIDATE $? "Enabling expense-backend service"
 
-systemctl start expense-backend &>>$LOG_FILE_NAME
+systemctl restart expense-backend &>>$LOG_FILE_NAME
 VALIDATE $? "Starting expense-backend service"
