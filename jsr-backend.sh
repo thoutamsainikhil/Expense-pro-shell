@@ -35,7 +35,7 @@ echo "Script started executing at : $TIMESTAMP" &>>$LOG_FILE_NAME
 
 CHECK_ROOT
 
-sudo dnf module diable nodejs -y
+sudo dnf module disable nodejs -y
 VALIDATE $? "Disabling existing default nodeJS"
 
 sudo dnf module enable nodejs:20 -y
