@@ -21,12 +21,6 @@ if [ $1 -ne 0 ]
     fi
 }
 
-
-
-
-
-echo "Script started executing at : $TIMESTAMP" &>>$LOG_FILE_NAME
-
 CHECK_ROOT(){
 if [ $USER_ID -ne 0 ]
 then
@@ -36,6 +30,12 @@ fi
 }
 
 CHECK_ROOT
+
+echo "Script started executing at : $TIMESTAMP" &>>$LOG_FILE_NAME
+
+
+
+
 
 mkdir -p $LOGS_FOLDER
 echo "Script started executing at : $TIMESTAMP" &>>$LOG_FILE_NAME
