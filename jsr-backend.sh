@@ -35,16 +35,16 @@ echo "Script started executing at : $TIMESTAMP" &>>$LOG_FILE_NAME
 
 CHECK_ROOT
 
-dnf module diable nodejs -y
+sudo dnf module diable nodejs -y
 VALIDATE $? "Disabling existing default nodeJS"
 
-dnf module enable nodejs:20 -y
+sudo dnf module enable nodejs:20 -y
 VALIDATE $? "Enabling nodeJS 20"
 
-dnf install nodejs -y
+sudo dnf install nodejs -y
 VALIDATE $? "Installing nodeJS 20"
 
-dnf install nodejs -y
+sudo dnf install nodejs -y
 VALIDATE $? "Installing nodeJS 20"
 
 useradd expense
@@ -71,7 +71,7 @@ cp /home/ec2-user/expense-pro-shell/backend.service /etc/systemd/system/expense-
 
 #prepare MySQL Schema
 
-dnf install mysql -y &>>$LOG_FILE_NAME
+sudo dnf install mysql -y &>>$LOG_FILE_NAME
 VALIDATE $? "Installing MySQL Client"
 
 mysql -h mysql.jsrdaws.online -u root -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE_NAME
