@@ -46,6 +46,10 @@ VALIDATE $? "Installing Nginx Web Server"
 systemctl enable nginx &>>$LOG_FILE_NAME
 VALIDATE $? "Enabling Nginx Service"
 
+
+cp /home/ec2-user/Expense-pro-shell/expense.conf /etc/nginx/conf.d/expense.conf &>>$LOG_FILE_NAME
+VALIDATE $? "Copying Nginx configuration file"
+
 sudo systemctl status nginx 
 if [ $? -eq 0 ];
  then
@@ -68,8 +72,7 @@ VALIDATE $? "Changing directory to Nginx HTML folder"
 unzip /tmp/frontend.zip &>>$LOG_FILE_NAME
 VALIDATE $? "Extracting frontend files" 
 
-cp /home/ec2-user/Expense-pro-shell/expense.conf /etc/nginx/conf.d/expense.conf &>>$LOG_FILE_NAME
-VALIDATE $? "Copying Nginx configuration file"
+
 
 systemctl restart nginx &>>$LOG_FILE_NAME
 VALIDATE $? "Restarting Nginx Service"
